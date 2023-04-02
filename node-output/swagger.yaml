@@ -1,0 +1,398 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "imatpro-system",
+    "description" : "The API for the Intelligent Mathematical Problem Solving System project",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/Sofyntelligen/imatpro/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https:/www.sofyntelligen.com/imatpro/api/v1.0.0",
+    "description" : "Production ImatPro API Auto Mocking"
+  }, {
+    "url" : "http://127.0.0.1:8000/imatpro/api/v1.0.0",
+    "description" : "Development ImatPro API Auto Mocking"
+  } ],
+  "paths" : {
+    "/character/relationship" : {
+      "get" : {
+        "tags" : [ "Equations" ],
+        "operationId" : "getCharacterRelationship",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 4
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CharacterRelationshipResponse200"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CharacterRelationshipResponse204"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Equations" ],
+        "operationId" : "postCharacterRelationship",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 4
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CharacterRelationshipResponse201"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CharacterRelationshipResponse204"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equations/" : {
+      "get" : {
+        "tags" : [ "Equations" ],
+        "operationId" : "getEquations",
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MathematicalEquationsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller" : "Equations"
+      }
+    },
+    "/equations/user" : {
+      "get" : {
+        "tags" : [ "Equations" ],
+        "operationId" : "getEquationsUser",
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MathematicalEquationsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller" : "Equations"
+      }
+    },
+    "/equation/{equationId}" : {
+      "get" : {
+        "tags" : [ "Equations" ],
+        "operationId" : "getEquation",
+        "parameters" : [ {
+          "name" : "equationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MathematicalEquationsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller" : "Equations"
+      }
+    },
+    "/equation/{equationId}/user/" : {
+      "get" : {
+        "tags" : [ "Equations" ],
+        "operationId" : "getEquationUser",
+        "parameters" : [ {
+          "name" : "equationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MathematicalEquationsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller" : "Equations"
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "MathematicalEquations" : {
+        "required" : [ "date", "id", "latexDefine", "listCode", "view" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "example" : "0729a580-2240-11e6-9eb5-0002a5d5c51b"
+          },
+          "listCode" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CharacterEquations"
+            }
+          },
+          "latexDefine" : {
+            "type" : "string"
+          },
+          "view" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "typeEquations" : {
+            "type" : "string",
+            "enum" : [ "define" ]
+          },
+          "gradeSchool" : {
+            "type" : "string",
+            "enum" : [ "define" ]
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "lastUpdate" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        },
+        "description" : "Description of the structure of mathematical equations at the latex and code level"
+      },
+      "CharacterEquations" : {
+        "required" : [ "idOrder", "latex", "typeSymbol" ],
+        "type" : "object",
+        "properties" : {
+          "idOrder" : {
+            "type" : "string"
+          },
+          "typeSymbol" : {
+            "type" : "string"
+          },
+          "latex" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Definition of the order in which an equation is represented"
+      },
+      "CharacterRelationship" : {
+        "required" : [ "date", "id", "latex", "typeSymbol", "view" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "typeSymbol" : {
+            "type" : "string"
+          },
+          "latex" : {
+            "type" : "string"
+          },
+          "view" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "lastUpdate" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        },
+        "description" : "Definition of relationship between mathematical symbol and latex representation"
+      },
+      "MessageResponse" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "CODE_TEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "everything is ok"
+          }
+        }
+      },
+      "Pagination" : {
+        "required" : [ "count", "links" ],
+        "type" : "object",
+        "properties" : {
+          "count" : {
+            "type" : "integer",
+            "format" : "int64",
+            "example" : 12434
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/Links"
+          }
+        }
+      },
+      "Links" : {
+        "required" : [ "next", "previous" ],
+        "type" : "object",
+        "properties" : {
+          "next" : {
+            "type" : "string",
+            "format" : "uri",
+            "example" : "http://127.0.0.1:8000/imatpro/api/v1.0.0/page=1&page_size=10"
+          },
+          "previous" : {
+            "type" : "string",
+            "format" : "uri",
+            "example" : "http://127.0.0.1:8000/imatpro/api/v1.0.0/page=1&page_size=10"
+          }
+        }
+      },
+      "MathematicalEquationsResponse" : {
+        "required" : [ "data", "pagination" ],
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/MathematicalEquations"
+            }
+          },
+          "pagination" : {
+            "$ref" : "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "CharacterRelationshipResponse200" : {
+        "required" : [ "data", "pagination" ],
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CharacterRelationship"
+            }
+          },
+          "pagination" : {
+            "$ref" : "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "CharacterRelationshipResponse201" : {
+        "required" : [ "data" ],
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/CharacterRelationship"
+          }
+        }
+      },
+      "CharacterRelationshipResponse204" : {
+        "required" : [ "data", "pagination" ],
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "type" : "string",
+            "example" : "[]"
+          },
+          "pagination" : {
+            "type" : "string",
+            "example" : "{}"
+          }
+        }
+      }
+    }
+  }
+}
